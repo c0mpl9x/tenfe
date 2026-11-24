@@ -1,0 +1,69 @@
+:root {
+  color-scheme: light dark;
+  --fondo: #dce6e4;
+  --tinta: #0f2f2c;
+  --apagado: #476360;
+  --via: #9db3af;
+  --rojo: #b0201a;
+  --sobre-rojo: #fff;
+  --foco: #1b5fc1;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --fondo: #0e2624; --tinta: #e6f0ee; --apagado: #9fb8b4; --via: #3f5f5b; --rojo: #ff8a7d; --sobre-rojo: #2a0603; --foco: #8fc0ff; }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0 auto; max-width: 34rem; padding: 1rem 1.125rem 2.5rem;
+  background: var(--fondo); color: var(--tinta);
+  font: 400 1.0625rem/1.4 Overpass, system-ui, sans-serif;
+}
+p { margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--foco); outline-offset: 2px; }
+
+#viaje { display: grid; grid-template-columns: minmax(0, 1fr); gap: .125rem; }
+#viaje label { min-width: 0; display: flex; align-items: baseline; gap: .5rem; font-weight: 600; color: var(--apagado); }
+#viaje select {
+  flex: 1; width: 100%; min-width: 0; min-height: 2.75rem; padding: 0; border: 0; border-bottom: 2px solid var(--via);
+  background: transparent; color: var(--tinta); font: 800 1.375rem/1.2 Overpass, system-ui, sans-serif; text-overflow: ellipsis;
+}
+#viaje option { color: #0f2f2c; background: #fff; font-size: 1rem; font-weight: 400; }
+#girar {
+  justify-self: start; min-height: 2.75rem; padding: 0; border: 0; background: none; color: var(--tinta);
+  font: 600 1rem Overpass, system-ui, sans-serif; text-decoration: underline; text-underline-offset: .2em; cursor: pointer;
+}
+
+#alarma:not(:empty) { margin: .75rem -1.125rem 0; padding: .875rem 1.125rem; background: var(--rojo); color: var(--sobre-rojo); font-weight: 600; }
+#alarma p + p { margin-top: .5rem; }
+#paso { margin-top: .75rem; color: var(--apagado); }
+
+#trenes { list-style: none; margin: 1.25rem 0 0; padding: 0; display: grid; gap: 1.75rem; }
+.tren { display: grid; grid-template-columns: 5.75rem minmax(0, 1fr); column-gap: .75rem; align-items: start; }
+.cuando { font-variant-numeric: tabular-nums; }
+.cuando small { display: block; font-size: .875rem; color: var(--apagado); }
+.cifra { display: block; font-size: 2.75rem; font-weight: 800; line-height: 1; letter-spacing: -.03em; }
+.cifra.corta { font-size: 2rem; line-height: 1.375; }
+/* Hueca: todavía no es un hecho. */
+.hueca { color: transparent; -webkit-text-stroke: 1.5px var(--tinta); letter-spacing: 0; }
+.tachada { color: var(--apagado); text-decoration: line-through; text-decoration-thickness: 3px; }
+.destino { display: flex; align-items: baseline; gap: .5rem; font-weight: 600; }
+.linea { flex: none; min-width: 2.5rem; padding: .125rem .375rem 0; border-radius: 1rem; text-align: center; font-size: .9375rem; font-weight: 800; background: var(--color); color: var(--texto); }
+.malo { color: var(--rojo); font-weight: 600; }
+.detalle { color: var(--apagado); }
+
+/* El hilo: las paradas que le quedan hasta ti. */
+.hilo { grid-column: 1 / -1; display: flex; align-items: center; height: 1.5rem; margin-top: .5rem; }
+.hilo i { flex: none; width: .625rem; height: .625rem; border-radius: 50%; background: var(--via); }
+.hilo b { flex: 1; height: .25rem; background: var(--via); }
+.hilo i.tu { width: 1.125rem; height: 1.125rem; background: transparent; border: .25rem solid var(--tinta); }
+.hilo i.aqui { width: 1.25rem; height: 1.25rem; background: var(--color); border: .1875rem solid var(--tinta); }
+.hilo b.aqui { height: .875rem; border-radius: .5rem; background: var(--color); border: .1875rem solid var(--tinta); }
+.hilo b.lejos { background: repeating-linear-gradient(90deg, var(--via) 0 .25rem, transparent .25rem .5rem); }
+.hilo.roto .aqui { background: transparent; border-style: dashed; border-color: var(--rojo); }
+
+#avisos { margin-top: 2rem; }
+#avisos summary { min-height: 2.75rem; align-content: center; font-weight: 600; cursor: pointer; }
+#avisos ul { margin: 0; padding: 0; list-style: none; display: grid; gap: .875rem; }
+#avisos small { display: block; color: var(--apagado); }
+footer { margin-top: 2.25rem; display: grid; gap: .625rem; font-size: .9375rem; color: var(--apagado); }
+footer a { display: inline-block; padding: .5rem 0; color: var(--tinta); }

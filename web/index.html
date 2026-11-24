@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tenfe</title>
+<meta name="description" content="Qué trenes de Cercanías Madrid han salido de verdad y por dónde van.">
+<meta name="theme-color" content="#dce6e4" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0e2624" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><path d='M2 16h28' stroke='%230f2f2c' stroke-width='4'/><circle cx='20' cy='16' r='8' fill='%23bccf00' stroke='%230f2f2c' stroke-width='3'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Overpass:wght@400;600;800&display=swap">
+<link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+<header>
+  <form id="viaje">
+    <label>De <select id="o" aria-label="Estación donde subes"></select></label>
+    <label>a <select id="d" aria-label="Estación donde bajas"></select></label>
+    <button type="button" id="girar">Dar la vuelta</button>
+  </form>
+</header>
+<main>
+  <div id="alarma" role="alert"></div>
+  <p id="paso" aria-live="polite"></p>
+  <ol id="trenes"></ol>
+  <details id="avisos" hidden><summary></summary><ul></ul></details>
+</main>
+<footer>
+  <p id="edad"></p>
+  <p><a id="adif" target="_blank" rel="noopener">Ver la pantalla de Adif de esta estación</a></p>
+  <p>Web personal, no oficial. Datos de Renfe Operadora (CC BY 4.0), filtrados. No muestra el retraso que anuncia Renfe: solo lo que se ha visto.</p>
+</footer>
+<script type="module" src="app.js"></script>
+</body>
+</html>

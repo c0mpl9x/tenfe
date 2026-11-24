@@ -1,0 +1,17 @@
+name = "tenfe"
+main = "src/index.js"
+compatibility_date = "2026-11-01"
+
+[[durable_objects.bindings]]
+name = "OBSERVADOR"
+class_name = "Observador"
+
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["Observador"]
+
+[triggers]
+crons = ["*/5 * * * *"]
+
+[observability]
+enabled = true

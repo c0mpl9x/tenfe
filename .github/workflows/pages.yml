@@ -1,0 +1,20 @@
+name: Publicar
+on:
+  push: { branches: [main] }
+  schedule:
+    - cron: '30 4 * * *' # Renfe renueva el horario de madrugada
+  workflow_dispatch:
+permissions: { contents: read, pages: write, id-token: write }
+concurrency: { group: pages }
+jobs:
+  publicar:
+    runs-on: ubuntu-latest
+    environment: { name: github-pages, url: '${{ steps.p.outputs.page_url }}' }
+    steps:
+      - uses: actions/checkout@v7
+      - run: npm test
+      - run: python3 scripts/horario.py web/data
+      - uses: actions/upload-pages-artifact@v5
+        with: { path: web }
+      - id: p
+        uses: actions/deploy-pages@v5

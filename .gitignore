@@ -1,0 +1,8 @@
+node_modules/
+.wrangler/
+web/data/
+evidencia/
+site/
+tools/
+ANALISIS.md
+.claude/
